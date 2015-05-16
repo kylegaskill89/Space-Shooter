@@ -3,25 +3,41 @@ using System.Collections;
 
 public class PlayerControl : MonoBehaviour {
 
+
+	public GameObject PlayerBullet;
+
+	// Radius around ship that can collide with objects
 	float shipBoundary = .42f;
-	float maxSpeed = 10f;
-	float attackTimer = 0f;
-	float attackSpeed = .5f;
+	
+
+	float cooldownTime = 0f;
+
+	float cooldownTimeTwo = 0f; 
+
 
 	// Use this for initialization
 	void Start () {
+
+
 	
 	}
 	
 	// Update is called once per frame
 	void Update () {
 	
+		GameObject BulletOneSpawn = GameObject.Find ("BulletOneSpawn");
+		GameObject BulletTwoSpawn = GameObject.Find ("BulletTwoSpawn");
+
+		// Calls the Stats script
+		
+		Stats stats = GetComponent<Stats>();
+
 
 		// This is where the horizontal movement is taken care of
 
 		Input.GetAxis ("Horizontal");
 
-		transform.Translate( new Vector3(Input.GetAxis ("Horizontal") * maxSpeed * Time.deltaTime, 0, 0));
+		transform.Translate( new Vector3(Input.GetAxis ("Horizontal") * stats.maxSpeed * Time.deltaTime, 0, 0));
 
 
 		// This part of the code handles screen boundaries
@@ -34,6 +50,7 @@ public class PlayerControl : MonoBehaviour {
 		float screenRatio = (float)Screen.width / (float)Screen.height;
 		float orthoSize = Camera.main.orthographicSize * screenRatio;
 
+
 		// Asks the application if the ship is leaving the camera view
 
 		if (pos.x + shipBoundary > orthoSize) {
@@ -43,20 +60,28 @@ public class PlayerControl : MonoBehaviour {
 			pos.x = -orthoSize + shipBoundary;
 		}
 
+
 		// If the ship is leaving the camera, then this puts it back at the edge
 
 		transform.position = pos;
 
+
 		// Timer increases between attacks
 
-		attackTimer += .5f * Time.deltaTime;
-		Debug.Log (attackTimer);
+		cooldownTime += Time.deltaTime;
+		cooldownTimeTwo += Time.deltaTime;
+
 
 		// If the time since the last shot is higher than the attack speed and the player is pressing the button to shoot, then the timer is reset and the shot is fired
 
-		if (attackTimer >= attackSpeed && Input.GetAxis("Fire1") != 0) {
-			Debug.Log("Fire");
-			attackTimer = 0;	
-	}
+		if (cooldownTime >= stats.attackSpeed && Input.GetAxis ("Fire1") != 0) {
+			Instantiate (PlayerBullet, BulletOneSpawn.transform.position, transform.rotation);
+			cooldownTime = 0;
+		}
+
+		if (cooldownTimeTwo >= stats.attackSpeed && Input.GetAxis("Fire1") != 0) {
+			Instantiate (PlayerBullet, BulletTwoSpawn.transform.position, transform.rotation);
+			cooldownTimeTwo = 0;
+		}
 	}
 }
