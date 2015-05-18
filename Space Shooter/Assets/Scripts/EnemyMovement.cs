@@ -16,5 +16,12 @@ public class EnemyMovement : MonoBehaviour {
 
 		transform.Translate( new Vector3( 0, (stats.maxSpeed * -1) * Time.deltaTime, 0));
 
+		// Kills enemies that go off the screen at a y of -6
+		
+		Vector3 pos = transform.position;
+		
+		if (pos.y < -6) {
+			Destroy (this.gameObject);
+		}
 	}
 }

@@ -30,7 +30,7 @@ public class EnemyController : MonoBehaviour {
 
 
 	}
-
+	//This will handle sttacking the player
 
 	}
 
