@@ -4,7 +4,6 @@ using UnityEngine.UI;
 
 public class HealthBar : MonoBehaviour {
 
-
 	// Use this for initialization
 	void Start () {
 	

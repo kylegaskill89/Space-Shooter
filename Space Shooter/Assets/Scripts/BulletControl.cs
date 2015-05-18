@@ -20,11 +20,16 @@ public class BulletControl : MonoBehaviour {
 		Vector3 pos = transform.position;
 		
 		if (pos.y > Camera.main.orthographicSize) {
-			stats.currentBulletHP = 0;
+			Destroy(this.gameObject);
 		}
 
-		if (stats.currentBulletHP <= 0) {
-			Destroy(this.gameObject);
+		//if (stats.currentBulletHP <= 0) {
+		//	Destroy(this.gameObject);
+		//}
+	}
+	void OnCollisionEnter2D (Collision2D bul) {
+		if (bul.collider.gameObject.tag == "Enemy") {
+			Destroy (this.gameObject);
 		}
 	}
 }

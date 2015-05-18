@@ -1,14 +1,13 @@
-﻿using UnityEngine;
+using UnityEngine;
 using System.Collections;
 
-public class BulletStats : MonoBehaviour {
+public class EnemyStats : MonoBehaviour {
 
-	
-	public int maxBulletHP = 1;
-	public int currentBulletHP = 1;
+	public bool isBoss = false;
 
-	public float bulletDamage = 0.5f;
-	
+	public float maxEnemyHP = 1f;
+	public float currentEnemyHP = 1f;
+
 	public float maxSpeed = 25f;
 
 
@@ -19,6 +18,8 @@ public class BulletStats : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
+
+
 	
 	}
 }
