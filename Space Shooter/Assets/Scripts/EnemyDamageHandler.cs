@@ -8,8 +8,8 @@ public class EnemyDamageHandler : MonoBehaviour {
 	void OnCollisionEnter2D() {
 
 		/* GameObject bullet = GameObject.Find ("PlayerBullet");
-		BulletStats bulletDamage = bullet.GetComponent<BulletStats>();
-		health -= bullet.bulletDamage; */
+		BulletStats bulletDamage = bullet.GetComponent<BulletStats>(); */
+		health--;
 
 	}
 
