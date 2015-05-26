@@ -13,18 +13,18 @@ public class EnemyController : MonoBehaviour {
 
 		// Grabs EnemyStats script
 
-		EnemyStats EnemyStats = GetComponent<EnemyStats>();
+		Stats stats = GetComponent<Stats>();
 		//BulletStats stats = GetComponent<BulletStats>();
 
 
 		// Debug controls
 
 		if (Input.GetKeyDown(KeyCode.Delete)) {
-			EnemyStats.currentEnemyHP = -1;
+			stats.currentHealth = -1;
 			Debug.Log ("Enemy Destroyed!");
 		}
 
-		if (EnemyStats.currentEnemyHP <= 0) {
+		if (stats.currentHealth <= 0) {
 			Destroy (this.gameObject);
 		}
 

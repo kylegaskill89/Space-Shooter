@@ -9,7 +9,7 @@ public class BulletControl : MonoBehaviour {
 
 		// Calls the BulletStats script
 		
-		BulletStats stats = GetComponent<BulletStats>();
+		Stats stats = GetComponent<Stats>();
 
 
 		transform.Translate( new Vector3(0, stats.maxSpeed * Time.deltaTime, 0));

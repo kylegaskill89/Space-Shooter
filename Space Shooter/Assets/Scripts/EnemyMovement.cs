@@ -12,9 +12,9 @@ public class EnemyMovement : MonoBehaviour {
 	void Update () {
 
 
-		EnemyStats stats = GetComponent<EnemyStats>();
+		Stats stats = GetComponent<Stats>();
 
-		transform.Translate( new Vector3( 0, (stats.maxSpeed * -1) * Time.deltaTime, 0));
+		transform.Translate( new Vector3( 0, (-stats.maxSpeed) * Time.deltaTime, 0));
 
 		// Kills enemies that go off the screen at a y of -6
 		

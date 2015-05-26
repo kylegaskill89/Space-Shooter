@@ -15,6 +15,6 @@ public class HealthBar : MonoBehaviour {
 		Stats stats = PlayerShip.GetComponent<Stats>();
 		Image fillAmt = GetComponent<Image>();
 
-		fillAmt.fillAmount = stats.percentHP;
+		fillAmt.fillAmount = (stats.currentHealth / stats.maxHealth);
 	}
 }
