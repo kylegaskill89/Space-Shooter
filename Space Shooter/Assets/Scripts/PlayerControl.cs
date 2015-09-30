@@ -54,6 +54,7 @@ public class PlayerControl : MonoBehaviour {
 		// Asks the application if the ship is leaving the camera view
 
 		if (pos.x + shipBoundary > orthoSize) {
+			Debug.Log("Out of Bounds");
 			pos.x = orthoSize - shipBoundary;
 		}
 		if (pos.x - shipBoundary < -orthoSize) {
